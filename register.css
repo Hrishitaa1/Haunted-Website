@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Horror video background */
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  filter: brightness(40%) contrast(110%) saturate(120%);
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.register-box {
+  background: rgba(10, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px red;
+  width: 380px;
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+}
+
+.register-box h2 {
+  color: #ff0000;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px red, 0 0 30px darkred;
+  font-family: 'UnifrakturMaguntia', cursive;
+  animation: flicker 2s infinite;
+}
+
+.register-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  background: transparent;
+  border: 2px solid red;
+  color: #fff;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.register-box input:focus {
+  box-shadow: 0 0 15px red;
+  border-color: #ff0000;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 12px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.register-box button:hover {
+  background: darkred;
+  box-shadow: 0 0 20px red;
+  transform: scale(1.05);
+}
+
+.register-box p {
+  color: #ccc;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.register-box a {
+  color: #ff0000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-box a:hover {
+  text-shadow: 0 0 10px red;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}

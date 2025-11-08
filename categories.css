@@ -1,0 +1,281 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'arial', sans-serif;
+    background: url('img/page1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: #ff0000;
+    font-family: 'creepster';
+    text-shadow: 2px 2px 10px black;
+}
+
+/* Category Section */
+.categories {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px;
+    position: relative;
+}
+
+.category {
+    background-color: rgba(50, 50, 50, 0.8);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(-500px);
+    transition: all 0.8s ease, text-shadow 0.3s ease;
+    color: #f7f7f7; /* Initial text color */
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff4500, 0 0 40px #ff4500;
+    position: relative;
+    animation: drip 2s infinite ease-in-out;
+}
+.category.right {
+    transform: translateX(500px);
+}
+
+.category.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Glow Effect on Hover */
+.category:hover {
+    color: #ff4500;
+    text-shadow: 0 0 20px #ff4500, 0 0 30px #ff6347, 0 0 40px #ff6347, 0 0 50px #ff8c00;
+}
+
+/* Horizontal Scrolling Content */
+.scrolling-content {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+}
+
+.content {
+    flex: 0 0 300px;
+    text-align: center;
+    background-color: rgba(30, 30, 30, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    scroll-snap-align: start;
+    color: #ddd;
+}
+
+/* Image Zoom Effect on Hover */
+.content img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for zoom effect */
+}
+
+.content p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* Categories Descriptions Section */
+.categories-descriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.description-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+    opacity: 0; /* Hidden initially */
+}
+
+.category-box {
+    flex: 1;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Creepster', cursive;
+    background: rgba(50, 50, 50, 0.9);
+    color: #ff4500;
+    padding: 20px;
+    border-radius: 10px;
+    text-shadow: 0 0 20px #ff4500;
+}
+
+.description-box {
+    flex: 2;
+}
+
+.description-box h2 {
+    font-family: 'Creepster', cursive;
+    font-size: 2rem;
+    color: #ff0000;
+    text-shadow: 0 0 15px black;
+    margin-bottom: 10px;
+}
+
+.description-box p {
+    font-size: 1.2rem;
+    color: #ddd;
+    text-shadow: 0 0 10px black;
+}
+
+/* Long Sections */
+.long-section {
+    padding: 40px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
+    color: white;
+}
+
+.long-section h2 {
+    font-family: 'Creepster', cursive;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 10px black;
+    color: #ff0000;
+}
+
+.long-section p {
+    font-size: 1.2rem;
+    color: #ddd;
+    max-width: 800px;
+    margin: 10px auto;
+    text-shadow: 1px 1px 5px black;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Keyframes for left and right animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Odd and Even Ordering */
+.description-item:nth-child(odd) .description-box {
+    order: 1; /* Image on the left for odd items */
+}
+
+.description-item:nth-child(even) .description-box {
+    order: 0; /* Image on the right for even items */
+}
+
+/* Animation Triggered by JavaScript */
+.description-item.animate-left.show {
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.description-item.animate-right.show {
+    animation: slideInRight 1s ease-out forwards;
+}
+/* Flickering Text Effect for the Title */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4500, 0 0 30px #ff6347, 0 0 40px #ff8c00;
+    }
+    20%, 24%, 55% {
+        opacity: 0.8;
+        text-shadow: 0 0 5px #800000, 0 0 10px #8b0000, 0 0 15px #b22222, 0 0 20px #ff4500;
+    }
+    22%, 60% {
+        opacity: 0.6;
+        text-shadow: 0 0 3px #4b0000, 0 0 6px #800000, 0 0 10px #8b0000;
+    }
+}
+
+/* Apply Flicker to Title */
+h1 {
+    animation: flicker 3s infinite;
+}
+
+/* Dripping Text Effect */
+@keyframes drip {
+    0% {
+        text-shadow: 0 0 5px #ff0000;
+    }
+    50% {
+        text-shadow: 0 10px 15px #8b0000, 0 15px 30px #800000, 0 20px 50px rgba(139, 0, 0, 0.8);
+    }
+    100% {
+        text-shadow: 0 15px 25px #b22222, 0 25px 35px #ff6347, 0 35px 60px rgba(255, 0, 0, 0.5);
+    }
+}
+
+/* Apply Drip Effect to Categories */
+.category {
+    position: relative;
+    animation: drip 2s infinite ease-in-out;
+}
+
+/* Zoom In Effect on Hover */
+.content img:hover {
+    transform: scale(1.1); /* Zoom in the image by 10% */
+}
+
+/* Start Button Styling */
+.start-btn {
+    background-color: #ff4500;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+.start-btn:hover {
+    background-color: #ff6347;
+    transform: scale(1.05);
+}
+.start-btn:active {
+    transform: scale(0.97);
+}
+
+
